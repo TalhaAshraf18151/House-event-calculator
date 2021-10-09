@@ -1,7 +1,6 @@
 import tkinter
 from tkinter import *
 from tkinter import messagebox
-from tkinter import font 
 
 tk = tkinter
 main = Tk()  # Name of main window
@@ -37,6 +36,7 @@ entry_frame.grid(row=0, column=0, padx=10, pady=10, sticky=W)
 
 det_frame = LabelFrame(main, background="#D2D4DA")
 det_frame.grid(row=1, column=0, columnspan=2, padx=10, pady=10, sticky=N)
+
 
 lead_frame = LabelFrame(main, background="#D2D4DA")
 lead_frame.grid(row=0, column=1, padx=10, pady=10, sticky=E)
@@ -105,7 +105,7 @@ All_events.append(HouseEvent("House Trivia", "No", 66, 68, 74, 73, "Kowhai"))
 value_inside = tkinter.StringVar()
 # Set the default value of the variable
 value_inside.set("Select an event")
-# Create the optionmenu widget and passing 
+# Create the option menu widget and passing 
 # the options_list and value_inside to it.
 question_menu_1 = tkinter.OptionMenu(det_frame, value_inside, *names_list)
 question_menu_1.config(font=("Fixedsys", 12) , background="#D2D2DA", activebackground="#E9E9ED")
@@ -196,13 +196,13 @@ def make_obj():
             question_menu_1 = tkinter.OptionMenu(det_frame, value_inside, *names_list)
             question_menu_1.config(font=("Fixedsys", 12), background="#D2D2DA", activebackground="#E9E9ED")
             question_menu_1.grid(row=0, column=1)
-    #Erorr messages if the data is not valid
+    #Error messages if the data is not valid
     elif name in names_list:
-        messagebox.showerror("Name Error", "An event with this name already exists please chose another name")
+        messagebox.showwarning("Name Error", "An event with this name already exists please chose another name")
     elif name.strip() == "":    
-       messagebox.showerror("Name Error", "You must enter a name for the event")
+       messagebox.showwarning("Name Error", "You must enter a name for the event")
     elif len(name) > 15:
-       messagebox.showerror("Name Error", "Your name is too long it must be 15 characters only")
+       messagebox.showwarning("Name Error", "Your name is too long it must be 15 characters only")
 
 #Function for showing event details. It takes the string var from the option menu then uses a class function get_info() to pull information from the desired object and show it in an infobox 
 def info_func():
@@ -218,7 +218,7 @@ def info_func():
 
 #button for saving event it calls the make_obj function and creates each event as an object
 tk.Button(entry_frame, text="Save Event", command=make_obj, font=("Fixedsys", 12), background="#C7C7D1", activebackground="#E9E9ED").grid(row=7, column=0,columnspan=3, pady=5)
-#Button for showing details it calls the info_func which shows a infobox with information. Refer to the comments for the info_func() for more details on how that works
+#Button for showing details it calls the info_func which shows a info box with information. Refer to the comments for the info_func() for more details on how that works
 tk.Button(det_frame, text="Show Details", command=info_func, font=("Fixedsys", 12), background="#C7C7D1", activebackground="#E9E9ED").grid(column=0, row=1, columnspan=2)
 
 main.mainloop()
