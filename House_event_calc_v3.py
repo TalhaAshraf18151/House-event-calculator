@@ -34,7 +34,7 @@ main.config(menu=menubar)
 entry_frame = LabelFrame(main, text= "Details Entry", background="#D2D4DA", font=("Fixedsys"))
 entry_frame.grid(row=0, column=0, padx=10, pady=10, sticky=W)
 
-det_frame = LabelFrame(main, background="#D2D4DA")
+det_frame = LabelFrame(main, background="#D2D4DA", width='100')
 det_frame.grid(row=1, column=0, columnspan=2, padx=10, pady=10, sticky=N)
 
 
@@ -64,7 +64,6 @@ spin_2 = Spinbox(entry_frame, from_=0, to=100, increment=1, wrap=YES, state="rea
 spin_3 = Spinbox(entry_frame, from_=0, to=100, increment=1, wrap=YES, state="readonly", font=("Fixedsys"), readonlybackground="#E9E9ED", foreground="#E09D00")
 spin_4 = Spinbox(entry_frame, from_=0, to=100, increment=1, wrap=YES, state="readonly", font=("Fixedsys"), readonlybackground="#E9E9ED", foreground="#1C9C76")
 
-
 # using geometry manager to arange input widgets because we cant use .grid() on them directly because they are needed as variables
 entry_1.grid(column=1, row=0, columnspan=2, padx=2)
 spin_1.grid(column=1, row=2,columnspan=2)
@@ -74,15 +73,14 @@ spin_4.grid(column=1, row=5,columnspan=2)
 
 #--Leader board--##
 Label(lead_frame, text="Leaderboard", font=("Fixedsys", 15), background="#D2D4DA").grid(column=0, row=0, columnspan=2, pady=10)
-Label(lead_frame, text="Pohutukawa", font=("Fixedsys", 11), background="#FA6C38").grid(column=0, row=1, sticky=W, pady=5)
-Label(lead_frame, text="Kauri", font=("Fixedsys", 11), background="#62A8F9").grid(column=0, row=2, sticky=W, pady=5)
-Label(lead_frame, text="Kowhai", font=("Fixedsys", 11), background="#FFBC1F").grid(column=0, row=3, sticky=W, pady=5)
-Label(lead_frame, text="Rimu", font=("Fixedsys", 11), background="#01F472").grid(column=0, row=4, sticky=W, pady=5)
+Label(lead_frame, text="Pohutukawa ", font=("Fixedsys", 11), background="#FA6C38").grid(column=0, row=1, sticky=W, pady=5)
+Label(lead_frame, text="Kauri      ", font=("Fixedsys", 11), background="#62A8F9").grid(column=0, row=2, sticky=W, pady=5)
+Label(lead_frame, text="Kowhai     ", font=("Fixedsys", 11), background="#FFBC1F").grid(column=0, row=3, sticky=W, pady=5)
+Label(lead_frame, text="Rimu       ", font=("Fixedsys", 11), background="#01F472").grid(column=0, row=4, sticky=W, pady=5)
 Label(lead_frame, text= sum(ph_list), font=("Fixedsys", 12), background="#FA6C38").grid(column=1, row=1, sticky=W, pady=5, padx= 3)
 Label(lead_frame, text= sum(ku_list), font=("Fixedsys", 12), background="#62A8F9").grid(column=1, row=2, sticky=W, pady=5, padx= 3)
 Label(lead_frame, text= sum(kw_list), font=("Fixedsys", 12), background="#FFBC1F").grid(column=1, row=3, sticky=W, pady=5, padx= 3)
 Label(lead_frame, text= sum(ru_list), font=("Fixedsys", 12), background="#01F472").grid(column=1, row=4, sticky=W, pady=5, padx= 3)
-
 
 #-----------Class using which I will create my house event objects-----------#
 class HouseEvent:
