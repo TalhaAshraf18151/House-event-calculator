@@ -59,17 +59,17 @@ is_sport.set("Yes")
 Radiobutton(entry_frame, text="Yes", variable=is_sport, value="Yes", font=("Fixedsys", 12), background="#D2D4DA").grid(column=1, row=1,)
 Radiobutton(entry_frame, text="No", variable=is_sport, value="No", font=("Fixedsys", 12), background="#D2D4DA").grid(column=2, row=1,)
 
-red_points = Spinbox(entry_frame, from_=0, to=100, increment=1, wrap=YES, state="readonly", font=("Fixedsys"), readonlybackground="#E9E9ED", foreground="#FA6C38")
-blue_points = Spinbox(entry_frame, from_=0, to=100, increment=1, wrap=YES, state="readonly", font=("Fixedsys"), readonlybackground="#E9E9ED", foreground="#0656B1")
-yellow_points = Spinbox(entry_frame, from_=0, to=100, increment=1, wrap=YES, state="readonly", font=("Fixedsys"), readonlybackground="#E9E9ED", foreground="#E09D00")
-green_points = Spinbox(entry_frame, from_=0, to=100, increment=1, wrap=YES, state="readonly", font=("Fixedsys"), readonlybackground="#E9E9ED", foreground="#1C9C76")
+pohutukawa_points = Spinbox(entry_frame, from_=0, to=100, increment=1, wrap=YES, state="readonly", font=("Fixedsys"), readonlybackground="#E9E9ED", foreground="#FA6C38")
+kauri_points = Spinbox(entry_frame, from_=0, to=100, increment=1, wrap=YES, state="readonly", font=("Fixedsys"), readonlybackground="#E9E9ED", foreground="#0656B1")
+kowhai_points = Spinbox(entry_frame, from_=0, to=100, increment=1, wrap=YES, state="readonly", font=("Fixedsys"), readonlybackground="#E9E9ED", foreground="#E09D00")
+rimu_points = Spinbox(entry_frame, from_=0, to=100, increment=1, wrap=YES, state="readonly", font=("Fixedsys"), readonlybackground="#E9E9ED", foreground="#1C9C76")
 
 # using geometry manager to arange input widgets because we cant use .grid() on them directly because they are needed as variables
 name_entry.grid(column=1, row=0, columnspan=2, padx=2)
-red_points.grid(column=1, row=2,columnspan=2)
-blue_points.grid(column=1, row=3,columnspan=2)
-yellow_points.grid(column=1, row=4,columnspan=2)
-green_points.grid(column=1, row=5,columnspan=2)
+pohutukawa_points.grid(column=1, row=2,columnspan=2)
+kauri_points.grid(column=1, row=3,columnspan=2)
+kowhai_points.grid(column=1, row=4,columnspan=2)
+rimu_points.grid(column=1, row=5,columnspan=2)
 
 #--Leader board--##
 Label(lead_frame, text="Leaderboard", font=("Fixedsys", 15), background="#D2D4DA").grid(column=0, row=0, columnspan=2, pady=10)
@@ -109,11 +109,12 @@ event_name_list_dropdown = tkinter.OptionMenu(det_frame, selected_event, *names_
 event_name_list_dropdown.config(font=("Fixedsys", 12) , background="#D2D2DA", activebackground="#E9E9ED")
 event_name_list_dropdown.grid(row=0, column=1)
 #Updates leader board by packing latest  scores into leader board
-def leaderboard_update():
+def points_update():
     Label(lead_frame, text= sum(ph_list), font=("Fixedsys", 12), background="#FA6C38").grid(column=1, row=1, sticky=W)
     Label(lead_frame, text= sum(ku_list), font=("Fixedsys", 12), background="#62A8F9").grid(column=1, row=2, sticky=W)
     Label(lead_frame, text= sum(kw_list), font=("Fixedsys", 12), background="#FFBC1F").grid(column=1, row=3, sticky=W)
     Label(lead_frame, text= sum(ru_list), font=("Fixedsys", 12), background="#01F472").grid(column=1, row=4, sticky=W)
+
 
 
 #Function that takes the users input and uses the class constructor the make an object and then append it to the list we created above
@@ -123,10 +124,11 @@ def save_event_function():
     global event_name_list_dropdown
     name = name_entry.get()
     event_type = is_sport.get()
-    points_ph = int(red_points.get())
-    points_ku = int(blue_points.get())
-    points_kw = int(yellow_points.get())
-    points_ru = int(green_points.get())
+    points_ph = int(pohutukawa_points.get())
+    points_ku = int(kauri_points.get())
+    points_kw = int(kowhai_points.get())
+    points_ru = int(rimu_points.get())
+
     #validating name input
     if name.strip() != "" and name not in names_list and len(name) <= 15:
         #Sorting Scores
@@ -181,7 +183,7 @@ def save_event_function():
             kw_list.append(points_kw)
             ru_list.append(points_ru)
             #Running the function that puts updated scores on the leader board
-            leaderboard_update()
+            points_update()
 
             #Destroying previous option menu so that when we add a new one with the updated list there is no overlap
             event_name_list_dropdown.destroy() 
