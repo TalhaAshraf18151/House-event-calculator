@@ -11,10 +11,6 @@ main.resizable(False, False) #Makes window unable to resize in x and y direction
 
 All_events = [] #list in which I will hold my HouseEvent object
 names_list = ["Lampada Games", "House Trivia"] #list for holding Event names to be used in drop down   
-# ph_list = [75, 66] #List for holding points of teams for use in Leader board
-# ku_list = [60, 68] #                   ''
-# kw_list = [72, 74] #                   ''
-# ru_list = [68, 73] #                   ''
 
 #------Menu bar--------#
 #This is for a help menu at the top of the screen
@@ -77,13 +73,6 @@ Label(lead_frame, text="Pohutukawa ", font=("Fixedsys", 11), background="#FA6C38
 Label(lead_frame, text="Kauri      ", font=("Fixedsys", 11), background="#62A8F9").grid(column=0, row=2, sticky=W, pady=5)
 Label(lead_frame, text="Kowhai     ", font=("Fixedsys", 11), background="#FFBC1F").grid(column=0, row=3, sticky=W, pady=5)
 Label(lead_frame, text="Rimu       ", font=("Fixedsys", 11), background="#01F472").grid(column=0, row=4, sticky=W, pady=5)
-# Label(lead_frame, text= sum(ph_list), font=("Fixedsys", 12), background="#FA6C38").grid(column=1, row=1, sticky=W, pady=5, padx= 3)
-# Label(lead_frame, text= sum(ku_list), font=("Fixedsys", 12), background="#62A8F9").grid(column=1, row=2, sticky=W, pady=5, padx= 3)
-# Label(lead_frame, text= sum(kw_list), font=("Fixedsys", 12), background="#FFBC1F").grid(column=1, row=3, sticky=W, pady=5, padx= 3)
-# Label(lead_frame, text= sum(ru_list), font=("Fixedsys", 12), background="#01F472").grid(column=1, row=4, sticky=W, pady=5, padx= 3)
-
-
-
 #-----------Class using which I will create my house event objects-----------#
 class HouseEvent:
     def __init__(self, name, eventtype, ph_points, ku_points, kw_points, ru_points, who_won):
@@ -113,10 +102,6 @@ event_name_list_dropdown.grid(row=0, column=1)
 
 #Updates leader board by iterating the list of event objects and adding all the relevant points together to get a total points then packing latest  scores into leader board
 def new_lead_func(total_ph_points, total_ku_points, total_kw_points, total_ru_points):
-    # total_ph_points = 0
-    # total_ku_points = 0
-    # total_kw_points = 0
-    # total_ru_points = 0
     for obj in All_events:
         total_ph_points += obj.ph_points
         total_ku_points += obj.ku_points
@@ -128,7 +113,6 @@ def new_lead_func(total_ph_points, total_ku_points, total_kw_points, total_ru_po
     Label(lead_frame, text=  total_ru_points, font=("Fixedsys", 12), background="#01F472").grid(column=1, row=4, sticky=W)
     print(total_ph_points, total_ku_points, total_kw_points, total_ru_points)
  
-
 new_lead_func(0, 0, 0, 0)
 
 #Function that takes the users input and uses the class constructor the make an object and then append it to the list we created above
@@ -191,11 +175,6 @@ def save_event_function():
             #Creating the House event object and appending it to a list for it to be stored in memory
             All_events.append(HouseEvent(name, event_type, points_ph, points_ku, points_kw, points_ru, winners))
 
-            #Adding scores to house points list for leader board
-            # ph_list.append(points_ph)
-            # ku_list.append(points_ku)
-            # kw_list.append(points_kw)
-            # ru_list.append(points_ru)
             #Running the function that puts updated scores on the leader board
             new_lead_func(0, 0, 0, 0)
 
@@ -232,8 +211,5 @@ def show_details_function():
 tk.Button(entry_frame, text="Save Event", command=save_event_function, font=("Fixedsys", 12), background="#C7C7D1", activebackground="#E9E9ED").grid(row=7, column=0,columnspan=3, pady=5)
 #Button for showing details it calls the show_details_function which shows a info box with information. Refer to the comments for the show_details_function() for more details on how that works
 tk.Button(det_frame, text="Show Details", command=show_details_function, font=("Fixedsys", 12), background="#C7C7D1", activebackground="#E9E9ED").grid(column=0, row=1, columnspan=2)
-
-# tk.Button(entry_frame, text="test button", command=new_lead_func).grid(row=8, column=0)
-
 
 main.mainloop()
